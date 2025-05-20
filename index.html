@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cole Feuer - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Cole Feuer</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <!-- Optional: Add a profile picture here later -->
+                <!-- <img src="img/profile.jpg" alt="Cole Feuer" class="profile-pic"> -->
+                <h1>Cole Feuer</h1>
+                <p class="subtitle">Software Developer & Machine Learning Researcher</p>
+                <p>Passionate about designing and optimizing AI systems across deep learning, reinforcement learning, LLMs, computer vision, and large-scale model development. Excited to contribute to innovative research and scalable AI applications in diverse domains.</p>
+                <div class="social-links">
+                    <a href="https://github.com/CDFire" target="_blank">GitHub</a>
+                    <a href="mailto:coledfeuer@gmail.com">Email</a>
+                    <!-- Add LinkedIn if you have one: <a href="YOUR_LINKEDIN_URL" target="_blank">LinkedIn</a> -->
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="content-section">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>Data Analyst</h3>
+                <p class="company-date">Clinical Intelligence Center, Icahn School of Medicine at Mount Sinai — New York, NY | January 2022 - December 2022</p>
+                <ul>
+                    <li>Designed, trained, and optimized preliminary neural networks predicting patient outcomes for Out-of-Hospital Cardiac Arrest survival.</li>
+                    <li>Developed predictive models incorporating environmental and clinical factors using Python and TensorFlow, deployed on the Minerva supercomputing cluster.</li>
+                    <li>Conducted comprehensive AUC/ROC analyses to evaluate model performance and refine feature selection.</li>
+                    <li>Co-authored a published paper in JMIR Aging on the joint modeling of social determinants and clinical factors.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Part Time Load Analyst and Geothermal Installation Assistant</h3>
+                <p class="company-date">Geothermal Works — New York, NY | January 2023 - Present</p>
+                <ul>
+                    <li>Performed heat gain and loss analyses for the design of over 100 DX geothermal systems.</li>
+                    <li>Developed the Geothermal Works company website using custom HTML, CSS, and Javascript on Squarespace.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Summer Intern</h3>
+                <p class="company-date">Department of Genetic and Genomic Sciences, Mount Sinai — New York, NY | June 2018 - August 2018</p>
+                <ul>
+                    <li>Led a solo machine learning project analyzing patient genetic data to predict personalized drug efficacy.</li>
+                    <li>Built neural networks for precision-based personalization strategies, simulating recommendation mechanisms for drug response.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>Projects</h2>
+            
+            <div class="project-highlight">
+                <h3>Master’s Thesis: 3D-to-2D Style Transfer for Temporal Animation Consistency</h3>
+                <p class="project-date">January 2025 – Present</p>
+                <ul>
+                    <li>Designed a deep learning pipeline to transform 3D rendered frames into anime-stylized 2D frames while maintaining visual coherence across sequences.</li>
+                    <li>Developed 8-channel input representations (edge, depth, color maps, and prior frames) to enforce feature retention and temporal stability.</li>
+                    <li>Pre-trained a U-Net generator on anime datasets using pixel, perceptual, and style losses.</li>
+                    <li>Implemented a GAN system inspired by CycleGAN, with dual PatchGAN discriminators and cycle-consistency, adversarial, and identity losses.</li>
+                    <li>Ongoing model refinement focuses on enhancing style realism, minimizing temporal artifacts, and improving generalization.</li>
+                </ul>
+            </div>
+
+            <div class="project-highlight">
+                <h3>Federated Learning Aggregation Study</h3>
+                <p class="project-date">January 2025 – April 2025</p>
+                <ul>
+                    <li>Co-authored a research paper comparing federated aggregation methods (FedAvg, FedLAMA, FedDist) across diverse model types and data modalities.</li>
+                    <li>Implemented and benchmarked CNNs on CIFAR-10, MLPs on MIMIC-III, and DistilBERT on Sentiment140.</li>
+                    <li>Analyzed convergence behavior, generalization performance, and aggregation stability.</li>
+                    <li>Highlighted method-specific tradeoffs, providing recommendations for different FL scenarios.</li>
+                </ul>
+            </div>
+
+            <h3>My GitHub Repositories</h3>
+            <p>Here are some of my public projects on GitHub. More details can be found by clicking on them.</p>
+            <div id="github-repos" class="repo-grid">
+                <!-- Repositories will be loaded here by JavaScript -->
+                <p>Loading repositories...</p>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div>
+                    <h4>Programming Languages</h4>
+                    <p>Python, C++, C, Java, JavaScript, SQL, Bash, Ruby</p>
+                </div>
+                <div>
+                    <h4>Machine Learning & AI Frameworks</h4>
+                    <p>PyTorch, TensorFlow, Hugging Face Transformers, Scikit-learn, LangChain, PEFT, FlashAttention, CycleGAN, Diffusion Models</p>
+                </div>
+                <div>
+                    <h4>Data Science & Analysis</h4>
+                    <p>NumPy, Pandas, OpenCV, Matplotlib, Seaborn, AUC/ROC analysis, feature engineering</p>
+                </div>
+                <div>
+                    <h4>Deployment & Infrastructure</h4>
+                    <p>AWS (EC2, S3), SLURM, Postgres, MongoDB, REST APIs</p>
+                </div>
+                <div>
+                    <h4>DevOps & Tools</h4>
+                    <p>Git, GitHub, Jupyter, VS Code, Streamlit, React, Node.js, Adobe Illustrator, Figma</p>
+                </div>
+                <div>
+                    <h4>Specialized Areas</h4>
+                    <p>Federated Learning, Style Transfer, Computer Vision, Large Language Models, Reinforcement Learning, Neural Architecture Design</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="content-section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Rensselaer Polytechnic Institute (RPI) - Troy, NY</h3>
+                <p><strong>Master of Science in Computer Science</strong> - May 2025 (Expected)</p>
+                <p>GPA: 3.9</p>
+            </div>
+            <div class="education-item">
+                <h3>Rensselaer Polytechnic Institute (RPI) - Troy, NY</h3>
+                <p><strong>Bachelor of Science in Computer Science</strong> - May 2024</p>
+                <p>GPA: 3.69</p>
+            </div>
+        </section>
+
+        <section id="publications" class="content-section">
+            <h2>Publications</h2>
+            <div class="publication-item">
+                <p>Abbott EE, Oh W, Dai Y, <strong>Feuer C</strong>, Chan L, Carr BG, Nadkarni GN. Joint modeling of social determinants and clinical factors defines subphenotypes in out-of-hospital cardiac arrest survival. JMIR Aging. 2023. 
+                <a href="https://doi.org/10.2196/51844" target="_blank">doi: 10.2196/51844</a>. PMID: 38059569</p>
+            </div>
+            <div class="publication-item">
+                <p>Marquez-Luna C, My Vy Ha, Petrazzini BO, Vaid A, <strong>Feuer CD</strong>, et al. A Multi-Ethnic Polygenic Risk Score Modifies the Effect of the Transthyretin V122I Variant on Heart Failure. eLIFE, in press.</p>
+                 <!-- Add link when available -->
+            </div>
+        </section>
+
+        <section id="interests" class="content-section">
+            <h2>Interests</h2>
+            <p>Woodworking, Music Production, Rock Climbing, DIY Projects, Cooking</p>
+        </section>
+
+        <section id="contact" class="content-section contact-section">
+            <h2>Get In Touch</h2>
+            <p>Feel free to reach out if you'd like to collaborate, discuss opportunities, or just chat about tech!</p>
+            <p>Email: <a href="mailto:coledfeuer@gmail.com">coledfeuer@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/CDFire" target="_blank">github.com/CDFire</a></p>
+            <!-- <p>Phone: 914-960-4688 (Consider if you want this publicly visible)</p> -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="currentYear"></span> Cole Feuer. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
