@@ -1,75 +1,65 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+// In your script.js
+const githubUsername = 'CDFire';
+const repoContainer = document.getElementById('github-repos');
+// Define the specific repository names you want to display
+const desiredRepoNames = ["UnpairedStyleTransfer", "TrafficDetector", "AIResumeTailor", "CognitiveBiasDetector", "HandMouse"]; 
+
+if (repoContainer) {
+    fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc&per_page=100`) // Fetch up to 100 repos
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        });
-    });
+            return response.json();
+        })
+        .then(allRepos => {
+            repoContainer.innerHTML = ''; // Clear "Loading..."
 
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+            // Filter the repositories
+            const filteredRepos = allRepos.filter(repo => 
+                desiredRepoNames.includes(repo.name) && !repo.fork // Also check if it's not a fork
+            );
 
-    // Fetch GitHub Repositories
-    const githubUsername = 'CDFire'; // Your GitHub username
-    const repoContainer = document.getElementById('github-repos');
+            if (filteredRepos.length === 0) {
+                repoContainer.innerHTML = '<p>No specified repositories found.</p>';
+                return;
+            }
 
-    if (repoContainer) { // Check if the element exists
-        fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(repos => {
-                repoContainer.innerHTML = ''; // Clear "Loading..." message
-                // You might want to filter or limit the number of repos displayed
-                // For example, to show top 6: repos.slice(0, 6).forEach(repo => {
-                repos.forEach(repo => {
-                    if (repo.fork) return; // Optionally skip forked repositories
+            filteredRepos.forEach(repo => {
+                // ... (your existing code to create and append repoCard)
+                const repoCard = document.createElement('div');
+                repoCard.classList.add('repo-card');
 
-                    const repoCard = document.createElement('div');
-                    repoCard.classList.add('repo-card');
+                const repoNameEl = document.createElement('h4'); // Renamed for clarity
+                const repoLink = document.createElement('a');
+                repoLink.href = repo.html_url;
+                repoLink.textContent = repo.name;
+                repoLink.target = '_blank';
+                repoNameEl.appendChild(repoLink);
 
-                    const repoName = document.createElement('h4');
-                    const repoLink = document.createElement('a');
-                    repoLink.href = repo.html_url;
-                    repoLink.textContent = repo.name;
-                    repoLink.target = '_blank'; // Open in new tab
-                    repoName.appendChild(repoLink);
+                const repoDescription = document.createElement('p');
+                repoDescription.textContent = repo.description || 'No description provided.';
+                
+                const repoMeta = document.createElement('div');
+                repoMeta.classList.add('repo-meta');
+                
+                const languageSpan = document.createElement('span');
+                languageSpan.textContent = repo.language ? `Language: ${repo.language}` : 'Language: N/A';
+                
+                const starsSpan = document.createElement('span');
+                starsSpan.innerHTML = `★ ${repo.stargazers_count}`;
 
-                    const repoDescription = document.createElement('p');
-                    repoDescription.textContent = repo.description || 'No description provided.';
-                    
-                    const repoMeta = document.createElement('div');
-                    repoMeta.classList.add('repo-meta');
-                    
-                    const languageSpan = document.createElement('span');
-                    languageSpan.textContent = repo.language ? `Language: ${repo.language}` : 'Language: N/A';
-                    
-                    const starsSpan = document.createElement('span');
-                    starsSpan.innerHTML = `★ ${repo.stargazers_count}`; // Star emoji
+                repoMeta.appendChild(languageSpan);
+                repoMeta.appendChild(starsSpan);
 
-                    repoMeta.appendChild(languageSpan);
-                    repoMeta.appendChild(starsSpan);
-
-                    repoCard.appendChild(repoName);
-                    repoCard.appendChild(repoDescription);
-                    repoCard.appendChild(repoMeta);
-                    repoContainer.appendChild(repoCard);
-                });
-            })
-            .catch(error => {
-                console.error("Could not fetch GitHub repositories:", error);
-                repoContainer.innerHTML = '<p>Could not load repositories at this time.</p>';
+                repoCard.appendChild(repoNameEl);
+                repoCard.appendChild(repoDescription);
+                repoCard.appendChild(repoMeta);
+                repoContainer.appendChild(repoCard);
             });
-    } else {
-        console.warn('Element with ID "github-repos" not found.');
-    }
-});
+        })
+        .catch(error => {
+            console.error("Could not fetch GitHub repositories:", error);
+            repoContainer.innerHTML = '<p>Could not load repositories at this time.</p>';
+        });
+}
